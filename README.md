@@ -1,2 +1,2 @@
 # se-csai-translation
-The repository for the software engenering course for csai in tilburg university
+The repository for the software engineering course for csai at tilburg university

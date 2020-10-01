@@ -1,0 +1,27 @@
+# settings.yaml
+save_data: data/wmt/run/example
+## Where the vocab(s) will be written
+src_vocab: data/nl-en/europarl-v7.nl-en-fixed.en
+tgt_vocab: data/nl-en/europarl-v7.nl-en-fixed.nl
+
+# Corpus opts:
+data:
+    europarl:
+        path_src: data/wmt/europarl-v7.de-en.en
+        path_tgt: data/wmt/europarl-v7.de-en.de
+        transforms: [sentencepiece, filtertoolong]
+
+### Transform related opts:
+#### Subword
+src_subword_model: data/wmt/wmtende.model
+tgt_subword_model: data/wmt/wmtende.model
+src_subword_nbest: 1
+src_subword_alpha: 0.0
+tgt_subword_nbest: 1
+tgt_subword_alpha: 0.0
+#### Filter
+src_seq_length: 150
+tgt_seq_length: 150
+
+# silently ignore empty lines in the data
+skip_empty_level: silent

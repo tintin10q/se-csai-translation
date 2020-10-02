@@ -16,11 +16,10 @@ from sacremoses import MosesTokenizer
 mt_src, mt_trg =  MosesTokenizer(lang='en'), MosesTokenizer(lang='nl')
 print('got here 4')
 counter = 0
+print("src amount is", len(src))
 for split in src:
     counter += 1
-    if counter % 10000 == 0:
-        print('did something 10k times')
-        counter = 0
+    print(counter)
     src[split] = [mt_src.tokenize(sent.rstrip(), return_str=True, escape=False) for sent in src[split]]
     trg[split] = [mt_trg.tokenize(sent.rstrip(), return_str=True, escape=False) for sent in trg[split]]
 print('got here 5')

@@ -4,8 +4,8 @@ import codecs
 print(os.getcwd())
 print('start')
 with codecs.open(os.path.join('raw data', 'europarl-v7.nl-en.en'), 'r', 'utf8') as srcFile, codecs.open(os.path.join('raw data', 'europarl-v7.nl-en.nl'), 'r', 'utf8') as trgFile:
-    src1m = srcFile.readlines()[:1002000]
-    trg1m = trgFile.readlines()[:1002000]
+    src1m = srcFile.readlines()
+    trg1m = trgFile.readlines()
 print('Got here 1')
 src = {}
 trg = {}

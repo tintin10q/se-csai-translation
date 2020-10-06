@@ -12,7 +12,8 @@ def hello_world():
     audiofile = sr.AudioFile(file)
     with audiofile as source:
         audio = r.record(source)
-        text = r.recognize_google(audio_data=audio, language='english') # This will not work in production
+        text = r.recognize_google(audio_data=audio, language='english') # This will not work in production we need a key
+    # translate text!
     return text
 
 @app.route('/', methods=['GET'])

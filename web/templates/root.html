@@ -1,16 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+     <link href='{{url_for("static", filename="css/bootstrap_dark.css")}}' rel="stylesheet">
     <meta charset="UTF-8">
-    <title>Root</title>
-    <link href='{{url_for("static", filename="css/bootstrap_dark.css")}}' rel="stylesheet">
+    <title>Translate Audio files</title>
 </head>
 <body>
 <header>
     <div class="container text-center">
         <div class="col-md-12">
-            <h1>Audio translation</h1>
-            <p class="lead">Audio!</p>
+            <h1>Upload audio</h1>
+            <p class="lead">Translate audio!</p>
         </div>
         {% with messages = get_flashed_messages(with_categories=true) %}
         {% for category, message in messages %}
@@ -20,19 +20,17 @@
         </div>
         {% endfor %}
         {% endwith %}
+
     </div>
 </header>
-
-<div class="container text-center">
-<form action="." enctype=multipart/form-data method="post">
-    <label for="audio">Upload recorded audio</label>
-    <input accept="audio" class="form-control-file" id="audio"
-           name="audio"
-           required type="file">
-
-    <button class="btn btn-primary" type="submit">go go go!</button>
+<div class="container">
+<form action="." method="post" enctype="multipart/form-data">
+    <label for="audio_file">First name:</label>
+  <input required  type="file" id="audio_file" name="audio_file">
+    <br><br>
+    <input type="submit" value="Submit">
 </form>
-</div>
+</div>>
 
 </body>
 </html>

@@ -1,3 +1,3 @@
-from load import app
+from .load import app
 
 app.run()

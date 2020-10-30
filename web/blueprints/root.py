@@ -19,4 +19,4 @@ def root_post():
         audio = r.record(source)
     text = r.recognize_google(audio)
     # translate text with model
-    return text
+    return render_template("root.html", text=text)

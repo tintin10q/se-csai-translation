@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="en">
+<p lang="en">
 <head>
-     <link href='{{url_for("static", filename="css/bootstrap_dark.css")}}' rel="stylesheet">
+    <link href='{{url_for("static", filename="css/bootstrap_dark.css")}}' rel="stylesheet">
     <meta charset="UTF-8">
     <title>Translate Audio files</title>
 </head>
-<body>
+
 <header>
     <div class="container text-center">
         <div class="col-md-12">
@@ -23,14 +23,22 @@
 
     </div>
 </header>
+
 <div class="container">
+    <p>
+    <h2>Input the file</h2>
 <form action="." method="post" enctype="multipart/form-data">
+
     <label for="audio_file">First name:</label>
   <input required  type="file" id="audio_file" name="audio_file">
     <br><br>
     <input type="submit" value="Submit">
 </form>
-</div>>
-
+</p>
+<p>
+    <h3>Output</h3>
+    <textarea>{{text}}</textarea>
+</p>
+</div>
 </body>
 </html>

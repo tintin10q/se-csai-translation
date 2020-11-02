@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<p lang="en">
+<html lang="en">
 <head>
     <link href='{{url_for("static", filename="css/bootstrap_dark.css")}}' rel="stylesheet">
     <meta charset="UTF-8">
     <title>Translate Audio files</title>
 </head>
-
+<body>
 <header>
     <div class="container text-center">
         <div class="col-md-12">
@@ -25,20 +25,32 @@
 </header>
 
 <div class="container">
-    <p>
-    <h2>Input the file</h2>
-<form action="." method="post" enctype="multipart/form-data">
+    <div class="row justify-content-center mb-4">
 
-    <label for="audio_file">First name:</label>
-  <input required  type="file" id="audio_file" name="audio_file">
-    <br><br>
-    <input type="submit" value="Submit">
-</form>
-</p>
-<p>
-    <h3>Output</h3>
-    <textarea>{{text}}</textarea>
-</p>
+        <div class="col-6 ">
+
+            <h3 class="mb-3">Input the audio file</h3>
+
+            <form action="." class="" enctype="multipart/form-data" method="post">
+                <label for="audio_file">Audio file:</label>
+                <input id="audio_file" name="audio_file" required type="file">
+                <br><br>
+                <input type="submit" value="Submit">
+            </form>
+
+        </div>
+    </div>
+    <div class="row ">
+        <div class="col">
+            <h3>Output from audio</h3>
+            <textarea class="form-control" readonly rows="7">{{text}}</textarea>
+        </div>
+
+        <div class="col">
+            <h3>Translated output</h3>
+            <textarea class="form-control" readonly rows="7">{{text_t}}</textarea>
+        </div>
+    </div>
 </div>
 </body>
 </html>

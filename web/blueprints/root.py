@@ -23,6 +23,6 @@ def root_post():
         audio = r.record(source)
     text = r.recognize_google(audio)
 
-    text = translate(text)
+    text_t = translate(text)
 
-    return render_template("root.html", text=text)
+    return render_template("root.html", text=text,text_t=text_t)

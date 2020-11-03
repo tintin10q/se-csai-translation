@@ -1,7 +1,7 @@
 # own added
 # own added
 .idea/
-
+model/model_step_50000.pt
 
 
 
@@ -134,5 +134,4 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
-model/model_step_50000.pt
-web/static/js/
+

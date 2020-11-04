@@ -1,6 +1,8 @@
 # own added
 # own added
 .idea/
+model/model_step_50000.pt
+
 
 
 # Byte-compiled / optimized / DLL files
@@ -132,3 +134,4 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+

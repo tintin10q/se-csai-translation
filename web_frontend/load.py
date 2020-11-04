@@ -1,5 +1,5 @@
 from flask import Flask
-import web.blueprints as blueprints
+import web_frontend.blueprints as blueprints
 
 
 app = Flask(__name__)

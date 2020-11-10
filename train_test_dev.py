@@ -29,9 +29,9 @@ def split_ttd(srcF, trgF, size):
         logging.error("Target file does not exist")
         raise FileNotFoundError()
     
-    with codecs.open(srcF, 'r', 'utf8') as srcFile, codecs.open(trgF, 'r', 'utf8') as trgFile:
-        src_data = srcFile.readlines()
-        trg_data = trgFile.readlines()
+    with codecs.open(os.path.join('raw_data', 'Europarl.en-nl.en'), 'r', 'utf8') as srcFile, codecs.open('raw_data', 'Europarl.en-nl.nl', 'r', 'utf8') as trgFile:
+        src_data = srcFile.readlines()[:1002000]
+        trg_data = trgFile.readlines()[:1002000]
 
     src = {}
     trg = {}
@@ -117,7 +117,7 @@ def main():
     for split in ['train', 'test', 'dev']:
         src_out_filename = '.'.join([args.source, split, 'tok-clean', 'src']) 
         trg_out_filename = '.'.join([args.target, split, 'tok-clean', 'trg'])
-        with codecs.open(src_out_filename, 'w', 'utf8') as srcOutFile, codecs.open(trg_out_filename, 'w', 'utf8') as trgOutFile:
+        with codecs.open(os.path.join('EN-NL', 'data', split + '.src'), 'w', 'utf8') as srcOutFile, codecs.open(tos.path.join('EN-NL', 'data', split + '.trg'), 'w', 'utf8') as trgOutFile:
             srcOutFile.write('\n'.join(src[split]) + '\n')
             trgOutFile.write('\n'.join(trg[split]) + '\n')
     logging.info("All done.")

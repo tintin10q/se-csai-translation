@@ -1,0 +1,16 @@
+ {
+    "models_root": "./available_models",
+    "models": [
+        { 
+            "id": 100,
+            "model": "model_step_50000.pt",
+            "timeout": 600,
+            "opt": {
+            "batch_size": 1,
+            "beam_size": 10
+            }
+        }
+        
+    ],
+     "translate_url": "http://DESKTOP-NBG1D5R:5000"
+}

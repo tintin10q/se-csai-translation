@@ -47,8 +47,17 @@
         </div>
 
         <div class="col">
+            <div class="row mb-3">
             <h3>Translated output</h3>
             <textarea class="form-control" readonly rows="7">{{text_t}}</textarea>
+            </div>
+            {% if score %}
+            <div class="row">
+                <p>Translation score: {{score}}</p>
+<!--                <label for="score">Translation score: </label>-->
+<!--                <input type="text" id="score" value="score" readonly>-->
+            </div>
+            {% endif %}
         </div>
     </div>
 </div>

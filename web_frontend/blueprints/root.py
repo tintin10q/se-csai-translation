@@ -21,7 +21,8 @@ def root_post():
     with audio_file as source:
         r.adjust_for_ambient_noise(source)
         audio = r.record(source)
-    text = r.recognize_google(audio)
+    # text = r.recognize_google(audio)
+    text = r.recognize_sphinx(audio)
     Translated = translate_server.translate_text(text, url=json.load(open("available_models/conf.json"))[
         "translate_url"])
     return render_template("root.html", text=Translated.src, text_t=Translated.tgt, score=Translated.score)

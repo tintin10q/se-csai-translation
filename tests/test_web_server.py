@@ -1,7 +1,7 @@
 from web_frontend import app
 import unittest
-from werkzeug.datastructures import ImmutableMultiDict, FileStorage
-import io
+from werkzeug.datastructures import FileStorage
+
 import os
 
 print(os.getcwd())

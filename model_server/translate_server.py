@@ -3,23 +3,48 @@ import requests
 import json
 from sacremoses import MosesTokenizer, MosesDetokenizer
 import speech_recognition as sr
+import os
+from available_models import get_valid_model_ids as get_valid_model_ids
 
 mt_en = MosesTokenizer(lang='en')
 mt_nl = MosesDetokenizer(lang='nl')
 
 
 class TranslatedObject:
+    """Return object of translate_text"""
     def __init__(self, src, tgt, score):
         self.src = src
         self.tgt = tgt
         self.score = score
 
 
-def translate_text(text: str, url: str, model_id=100) -> TranslatedObject:
+
+
+class ModelIDNotFoundException(Exception):
+    """Exception raised when model id is not found.
+
+    Attributes:
+        model_id -- the model id that was not found
+        found_model_ids -- model ids that where found
+        message -- the models that where found
+    """
+
+    def __init__(self, model_id, found_model_ids:list) -> None:
+        self.model_id = model_id
+        self.found_model_ids = found_model_ids
+        self.message = f"Model id {self.model_id} was not found in the config file. The ids that where found are {found_model_ids}"
+        super().__init__(self.message)
+
+
+def translate_text(text: str, url: str, model_id) -> TranslatedObject:
     """Translates a text with the url of a translation server. The url is the url that comes up when you start the
     translation model"""
     assert type(text) == str, "Text has to be of type string"
     assert type(url) == str, "Url has to be of type string"
+
+    model_ids = get_valid_model_ids()
+    if model_id not in model_ids:
+        raise ModelIDNotFoundException(model_id, model_ids)
     # text = re.sub(r"([?.!,:;¿])", r" \1 ", text)
     # text = re.sub(r'[" "]+', " ", text)
     text = mt_en.tokenize(text, return_str=True)
@@ -42,7 +67,7 @@ def translate_text(text: str, url: str, model_id=100) -> TranslatedObject:
 r = sr.Recognizer()
 
 
-def translate_audio(file, audio_engine="sphinx"):
+def transcribe_audio(file, audio_engine="sphinx") -> str:
     """Turn audio into text, auido_engine can be sphinx or google"""
     audio_file = sr.AudioFile(file)
     with audio_file as source:

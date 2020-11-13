@@ -8,3 +8,4 @@ if __name__ == "__main__":
 
 def start_model_server():
     main()
+    print("started model server")

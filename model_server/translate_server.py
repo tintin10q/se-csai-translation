@@ -28,7 +28,6 @@ class ModelIDNotFoundException(Exception):
         found_model_ids -- model ids that where found
         message -- the models that where found
     """
-
     def __init__(self, model_id, found_model_ids:list) -> None:
         self.model_id = model_id
         self.found_model_ids = found_model_ids
@@ -68,7 +67,7 @@ r = sr.Recognizer()
 
 
 def transcribe_audio(file, audio_engine="sphinx") -> str:
-    """Turn audio into text, auido_engine can be sphinx or google"""
+    """Turn audio into text, audio_engine can be sphinx or google"""
     audio_file = sr.AudioFile(file)
     with audio_file as source:
         r.adjust_for_ambient_noise(source)

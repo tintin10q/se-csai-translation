@@ -22,7 +22,7 @@ class TestWebServer(unittest.TestCase):
         self.assertEqual(result.status_code, 200, "Get of / did not return 200")
 
     def test_root_post(self):
-        print("This is an integration test testing everything!")
+        print("This is an integration test testing everything together.")
         file = FileStorage(
             stream=open("harvard.wav", "rb", buffering=0),
             filename="harvard.wav",

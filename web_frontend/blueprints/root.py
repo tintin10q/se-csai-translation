@@ -11,18 +11,13 @@ def root_get():
     return render_template("root.html")
 
 
-r = sr.Recognizer()
+
 
 
 @root_blueprint.route("/", methods=["POST"])
 def root_post():
     file = request.files['audio_file']
-    audio_file = sr.AudioFile(file)
-    with audio_file as source:
-        r.adjust_for_ambient_noise(source)
-        audio = r.record(source)
-    # text = r.recognize_google(audio)
-    text = r.recognize_sphinx(audio)
-    Translated = translate_server.translate_text(text, url=json.load(open("available_models/conf.json"))[
-        "translate_url"])
-    return render_template("root.html", text=Translated.src, text_t=Translated.tgt, score=Translated.score)
+    text = translate_server.translate_audio(file, "sphinx")
+    translated = translate_server.translate_text(text, url=json.load(open("available_models/conf.json"))[
+        "translate_url"], model_id=100)
+    return render_template("root.html", text=translated.src, text_t=translated.tgt, score=translated.score)

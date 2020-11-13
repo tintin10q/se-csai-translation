@@ -2,7 +2,7 @@
 # own added
 .idea/
 model_step_50000.pt
-
+model_step_50000-2.pt
 
 
 # Byte-compiled / optimized / DLL files

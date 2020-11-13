@@ -9,6 +9,14 @@
             "batch_size": 1,
             "beam_size": 10
             }
+        },{ 
+            "id": 101,
+            "model": "model_step_50000-2.pt",
+            "timeout": 600,
+            "opt": {
+            "batch_size": 1,
+            "beam_size": 10
+            }
         }
         
     ],

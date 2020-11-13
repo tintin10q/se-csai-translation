@@ -1,24 +1,19 @@
 import unittest
 
-from model_server import translate_server
+import model_server as ms
+
+
 
 class TestSoundToText(unittest.TestCase):
 
-    def test_transcription(self):
-        s = "Hi I am a test string"
-        self.assertEqual(translate_server.translate_text(), 'FOO')
+    def test_audio_to_text(self):
+        self.assertIsInstance(ms.transcribe_audio("harvard.wav"), str, msg="Return of transcribe_audio is not string")
 
+    def test_audio_to_text_invalid_file(self):
+        self.assertRaises(FileNotFoundError, ms.transcribe_audio, file="harvardd.wav")
 
-    def test_voice_to_text(self):
-        self.assertTrue('FOO'.isupper())
-        self.assertFalse('Foo'.isupper())
-
-    def test_split(self):
-        s = 'hello world'
-        self.assertEqual(s.split(), ['hello', 'world'])
-        # check that s.split fails when the separator is not a string
-        with self.assertRaises(TypeError):
-            s.split(2)
+    def test_audio_to_text_invalid_type(self):
+        self.assertRaises(ValueError, ms.transcribe_audio, file="Lorem.ogg")
 
 if __name__ == '__main__':
     unittest.main()

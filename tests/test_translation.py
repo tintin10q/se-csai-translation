@@ -3,7 +3,6 @@ import threading
 import model_server as ms
 import available_models
 import time
-import json
 import requests
 
 import os
@@ -25,6 +24,7 @@ class TestTranslation(unittest.TestCase):
         self.translation_text = "Hi I am a test string. How are you today?"
 
     def test_translation_output_type(self):
+        print("This is an integration test. Testing getting valid model ids and trying to translate with each id found.")
         for model_id in self.model_ids:
             translation = ms.translate_text(self.translation_text, self.model_server_url, model_id)
             self.assertIsInstance(translation, ms.TranslatedObject, "Function does not return translation object")
@@ -48,8 +48,8 @@ class TestTranslation(unittest.TestCase):
 
     def test_translation_string_length(self):
         for model_id in self.model_ids:
-            self.assertGreater(ms.translate_text(self.translation_text, self.model_server_url, model_id).tgt, 0, "Return of translation has 0 characters")
-            self.assertGreater(ms.translate_text(self.translation_text, self.model_server_url, model_id).tgt, 1, "Return of translation has only 1 character")
+            self.assertGreater(len(ms.translate_text(self.translation_text, self.model_server_url, model_id).tgt), 0, "Return of translation has 0 characters")
+            self.assertGreater(len(ms.translate_text(self.translation_text, self.model_server_url, model_id).tgt), 1, "Return of translation has only 1 character")
 
 
 if __name__ == '__main__':

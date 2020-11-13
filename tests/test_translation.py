@@ -51,6 +51,14 @@ class TestTranslation(unittest.TestCase):
             self.assertGreater(len(ms.translate_text(self.translation_text, self.model_server_url, model_id).tgt), 0, "Return of translation has 0 characters")
             self.assertGreater(len(ms.translate_text(self.translation_text, self.model_server_url, model_id).tgt), 1, "Return of translation has only 1 character")
 
+    def test_translation_from_audio_file(self):
+        print("This is a integration test testing if the audio to text and translation work together")
+
+        for model_id in self.model_ids:
+            text = ms.transcribe_audio("harvard.wav")
+            translate_object = ms.translate_text(text, self.model_server_url, model_id)
+            self.assertIsInstance(translate_object, ms.TranslatedObject, "Return of translation has 0 characters")
+
 
 if __name__ == '__main__':
     unittest.main()
